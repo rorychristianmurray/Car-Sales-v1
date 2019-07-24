@@ -14,10 +14,11 @@ import "./styles.scss";
 
 const store = createStore(rooterReducer);
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(
+const AppWithProvider = (
   <Provider store={store}>
     <App />
-  </Provider>,
-  rootElement
+  </Provider>
 );
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(AppWithProvider, rootElement);

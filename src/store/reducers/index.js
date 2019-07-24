@@ -1,3 +1,6 @@
+// Action Types
+import { ADD_CAR } from "../actions";
+
 const initialState = {
   additionalPrice: 0,
   car: {
@@ -23,5 +26,7 @@ export const rooterReducer = (state = initialState, action) => {
         ...state,
         store: [...state.store, action.payload]
       };
+    default:
+      return state;
   }
 };

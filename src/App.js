@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { useSelector, useDispatch } from "react-redux";
 
 // Components
-import { ADD_FEATURE } from "./store/actions";
+import { ADD_FEATURE, REMOVE_FEATURE } from "./store/actions";
 import Header from "./components/Header";
 import AddedFeatures from "./components/AddedFeatures";
 import AdditionalFeatures from "./components/AdditionalFeatures";
@@ -18,6 +18,7 @@ const App = () => {
   const removeFeature = feature => {
     // dispatch an action here to remove an item
     console.log("removeFeature feature", feature);
+    dispatch({ type: REMOVE_FEATURE, payload: feature });
   };
 
   const addFeature = feature => {

@@ -1,5 +1,5 @@
 // Action Types
-import { ADD_FEATURE } from "../actions";
+import { ADD_FEATURE, REMOVE_FEATURE } from "../actions";
 
 const initialState = {
   additionalPrice: 0,
@@ -27,6 +27,16 @@ export const rooterReducer = (state = initialState, { type, payload }) => {
         car: {
           ...state.car,
           features: [...state.car.features, payload]
+        }
+      };
+    case REMOVE_FEATURE:
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          features: state.car.features.filter(
+            feature => feature.id !== payload.id
+          )
         }
       };
     default:

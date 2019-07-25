@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { rooterReducer } from "./store/reducers";
+import { store } from "./store";
 
 // Components
 import App from "./App";
@@ -11,8 +12,6 @@ import App from "./App";
 // Stylings
 import "bulma/css/bulma.css";
 import "./styles.scss";
-
-const store = createStore(rooterReducer);
 
 const AppWithProvider = (
   <Provider store={store}>

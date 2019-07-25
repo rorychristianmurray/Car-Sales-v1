@@ -1,5 +1,5 @@
 // Action Types
-import { ADD_CAR } from "../actions";
+import { ADD_FEATURE } from "../actions";
 
 const initialState = {
   additionalPrice: 0,
@@ -18,13 +18,16 @@ const initialState = {
   ]
 };
 
-export const rooterReducer = (state = initialState, action) => {
-  console.log("rooterReducer action", action);
-  switch (action.type) {
-    case ADD_CAR:
+export const rooterReducer = (state = initialState, { type, payload }) => {
+  console.log("rooterReducer action", { type, payload });
+  switch (type) {
+    case ADD_FEATURE:
       return {
         ...state,
-        store: [...state.store, action.payload]
+        car: {
+          ...state.car,
+          features: [...state.car.features, payload]
+        }
       };
     default:
       return state;

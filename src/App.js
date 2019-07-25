@@ -4,33 +4,38 @@ import { connect } from "react-redux";
 import { useSelector, useDispatch } from "react-redux";
 
 // Components
+import { ADD_FEATURE } from "./store/actions";
 import Header from "./components/Header";
 import AddedFeatures from "./components/AddedFeatures";
 import AdditionalFeatures from "./components/AdditionalFeatures";
 import Total from "./components/Total";
 
-const App = props => {
+const App = () => {
   const state = useSelector(state => state);
+  const dispatch = useDispatch();
+  console.log("App state", state);
 
-  const removeFeature = item => {
+  const removeFeature = feature => {
     // dispatch an action here to remove an item
+    console.log("removeFeature feature", feature);
   };
 
-  const buyItem = item => {
+  const addFeature = feature => {
     // dispatch an action here to add an item
+    console.log("addFeature feature", feature);
+    dispatch({ type: ADD_FEATURE, payload: feature });
   };
 
-  console.log("App props", props);
   console.log("App state", state);
 
   return (
     <div className="boxes">
       <div className="box">
         <Header car={state.car} />
-        <AddedFeatures car={state.car} />
+        <AddedFeatures car={state.car} removeFeature={removeFeature} />
       </div>
       <div className="box">
-        <AdditionalFeatures store={state.store} />
+        <AdditionalFeatures store={state.store} addFeature={addFeature} />
         <Total car={state.car} additionalPrice={state.additionalPrice} />
       </div>
     </div>
